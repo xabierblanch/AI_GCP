@@ -33,9 +33,9 @@ Unlike other approaches, this is an **end-to-end method**: no pre- or post-proce
 - Sub-pixel accuracy evaluation using:  
   - `mDist_pix`: median Euclidean distance in pixels  
   - `mDist_%`: pixel distance normalized by GCP size
-  - 
+    
 ---
-## Input Data Requirements
+## 📷 Input Data Requirements
 
 The input data must be an image with at least one visible GCP (Ground Control Point). Images can be:
 - **Complete images**: Full resolution images
