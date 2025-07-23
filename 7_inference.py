@@ -356,8 +356,9 @@ def refine_coordinates(gcp_path):
 
 if __name__ == '__main__':
     # Set variables for input image directory, model path, patch size, overlap, and threshold
-    img_dir = '/home/xbg/Desktop/Test_images/raw/cam1/img'
-    model_path = '/mnt/SSD_Data/Xabier/GITLAB_(XBG)/GCP_Detection/Model_Zoo/Pulmuki/20230807_1043_Keypoint/2023-08-08_e369_n88.17__DstPx-0.405_DArea-1.33_Score-0.993_rcnn-resnet50.pth'
+    img_dir = './raw_images'  # Folder with original high-resolution images
+    model_path = './models/pretrained_model.pth'  # Path to the trained model checkpoint
+    
     patch_size = 512 #best performance -> same than training
     overlap = 0.3 #overlap in % over the patch_size
     threshold = 0.5 #threshold of the inference step
