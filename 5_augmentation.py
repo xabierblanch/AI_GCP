@@ -177,7 +177,7 @@ def augmentation(path, number_of_images):
 #                     cv2.cvtColor(image, cv2.COLOR_RGB2BGR))
 
 
-path = r'/home/xbg/Desktop/Nossen_test/train/images'
+path = './dataset/train/images'
 dir_img, dir_labels = augmentation(path, 4)
 augmentation_geo(dir_img, dir_labels)
 # save_image_labelled(path)
