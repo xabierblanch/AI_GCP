@@ -25,11 +25,33 @@ Unlike other approaches, this is an **end-to-end method**: no pre- or post-proce
 
 ---
 
-# 🏷️ Annotations Format
+## ⚙️ Code Features
+
+- Modified **Keypoint R-CNN** to detect a **single keypoint** per object (instead of 17 human pose landmarks)  
+- Compatible with standard PyTorch + TorchVision APIs  
+- Custom data augmentation using **Albumentations**  
+- Sub-pixel accuracy evaluation using:  
+  - `mDist_pix`: median Euclidean distance in pixels  
+  - `mDist_%`: pixel distance normalized by GCP size
+  - 
+---
+## Input Data Requirements
+
+The input data must be an image with at least one visible GCP (Ground Control Point). Images can be:
+- **Complete images**: Full resolution images
+- **Image patches**: Cropped sections of larger images
+
+In the original publication, **512x512 image patches** were consistently used. The performance with other dimensions or aspect ratios is unknown, making proper input data management essential before training.
+
+⚠️ **Important**: Due to the unknown behavior with different dimensions, careful data preprocessing and validation is required to ensure optimal model performance.
+
+---
+
+## 🏷️ Annotations Format
 
 Each training or validation image must be accompanied by a `.json` file with the same name (excluding extension), containing its annotations.
 
-## Required Structure
+### Required Structure
 
 ```json
 {
@@ -42,28 +64,17 @@ Each training or validation image must be accompanied by a `.json` file with the
 }
 ```
 
-## Field Descriptions
+### Field Descriptions
 
 - **bboxes**: list of bounding boxes in `[x_min, y_min, x_max, y_max]` format
 - **keypoints**: list of keypoints in `[x, y, visibility]` format (1 keypoint per bbox)
 - **visibility**: should be `1` (visible), following COCO convention
 
-## Important Notes
+### Important Notes
 
 📄 See `sample.json` for a working example.
 
 For every image or image patch used in training or validation, there must be a corresponding `.json` annotation file with this structure.
-
----
-
-## ⚙️ Code Features
-
-- Modified **Keypoint R-CNN** to detect a **single keypoint** per object (instead of 17 human pose landmarks)  
-- Compatible with standard PyTorch + TorchVision APIs  
-- Custom data augmentation using **Albumentations**  
-- Sub-pixel accuracy evaluation using:  
-  - `mDist_pix`: median Euclidean distance in pixels  
-  - `mDist_%`: pixel distance normalized by GCP size
 
 ---
 
