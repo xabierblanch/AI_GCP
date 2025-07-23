@@ -25,15 +25,34 @@ Unlike other approaches, this is an **end-to-end method**: no pre- or post-proce
 
 ---
 
-## 📂 Datasets and Models
+# 🏷️ Annotations Format
 
-The model has been fine-tuned on three independent datasets with varying camera resolutions, image quality, and GCP typologies:
+Each training or validation image must be accompanied by a `.json` file with the same name (excluding extension), containing its annotations.
 
-- **KIWA**: river monitoring, circular black/white targets  
-- **Erosion4D**: hillslope monitoring, elevated circular markers  
-- **Pulmankijoki**: sub-arctic riverbank erosion, arbitrary cross markers
+## Required Structure
 
-Each dataset is associated with a dedicated trained model. Manual labeling was used for training; ellipse fitting and optical flow were used as baselines for evaluation.
+```json
+{
+  "bboxes": [
+    ["x_min", "y_min", "x_max", "y_max"]
+  ],
+  "keypoints": [
+    [["x", "y", "visibility"]]
+  ]
+}
+```
+
+## Field Descriptions
+
+- **bboxes**: list of bounding boxes in `[x_min, y_min, x_max, y_max]` format
+- **keypoints**: list of keypoints in `[x, y, visibility]` format (1 keypoint per bbox)
+- **visibility**: should be `1` (visible), following COCO convention
+
+## Important Notes
+
+📄 See `sample.json` for a working example.
+
+For every image or image patch used in training or validation, there must be a corresponding `.json` annotation file with this structure.
 
 ---
 
