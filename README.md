@@ -37,13 +37,11 @@ Unlike other approaches, this is an **end-to-end method**: no pre- or post-proce
 ---
 ## 📷 Input Data Requirements
 
-The input data must be an image with at least one visible GCP (Ground Control Point). Images can be:
-- **Complete images**: Full resolution images
-- **Image patches**: Cropped sections of larger images
+## Input Data Requirements
 
-In the original publication, **512x512 image patches** were consistently used. The performance with other dimensions or aspect ratios is unknown, making proper input data management essential before training.
+The input data must be an image with at least one visible GCP (Ground Control Point). In the original publication, **512x512 image patches** were consistently used. The performance with other dimensions or aspect ratios is unknown, making proper input data management essential before training.
 
-⚠️ **Important**: Due to the unknown behavior with different dimensions, careful data preprocessing and validation is required to ensure optimal model performance.
+⚠️ **Important**: Due to the diverse nature of image acquisition sources, resolutions, formats, and aspect ratios, preprocessing code is not provided. Users must ensure that all image patches contain visible GCPs and are accompanied by their corresponding `.json` annotation files.
 
 ---
 
