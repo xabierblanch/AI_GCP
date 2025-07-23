@@ -139,10 +139,12 @@ db_train = pd.DataFrame(columns=["epoch",
                                  "score",
                                  "eval_num"])
 
-train_images_dir = '/mnt/GSS_XBG/GCP_Publication/Datasets/GCP_Nossen/train/images/augmented/images'
-train_labels_dir = '/mnt/GSS_XBG/GCP_Publication/Datasets/GCP_Nossen/train/images/augmented/labels'
-eval_images_dir = '/mnt/GSS_XBG/GCP_Publication/Datasets/GCP_Nossen/validation/images'
-eval_labels_dir = '/mnt/GSS_XBG/GCP_Publication/Datasets/GCP_Nossen/validation/labels'
+# Paths to training and validation sets
+train_images_dir = './datasets/train/images'
+train_labels_dir = './datasets/train/labels'
+eval_images_dir = './datasets/validation/images'
+eval_labels_dir = './datasets/validation/labels'
+
 log_db = log(log_db, "train_images_dir", train_images_dir)
 log_db = log(log_db, "train_labels_dir", train_labels_dir)
 log_db = log(log_db, "eval_images_dir", eval_images_dir)
@@ -184,8 +186,6 @@ log_db = log(log_db, "mean_train", mean_train)
 log_db = log(log_db, "std_train", std_train)
 log_db = log(log_db, "mean_eval", mean_eval)
 log_db = log(log_db, "std_eval", std_eval)
-
-
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 log_db = log(log_db, "Device", device)
